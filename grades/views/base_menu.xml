@@ -1,0 +1,4 @@
+<odoo>
+  <menuitem id="grades_root_menu" name="Grades" />
+  <menuitem id="grades_menu" name="Grades" parent="grades_root_menu" />
+</odoo>

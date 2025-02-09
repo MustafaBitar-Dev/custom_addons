@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record id="grade_search" model="ir.ui.view">
+            <field name="name">grade.search</field>
+            <field name="model">grade</field>
+            <field name="arch" type="xml">
+                <search string="Grade Search">
+                    <field name="number" string="Grade Number" />
+                    <separator/>
+                    <field name="education"/>  
+                    <field name="transport"/>   
+                    <field name="medical"/> 
+                    <field name="mobile"/> 
+                    <field name="housing"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="grade_view_form" model="ir.ui.view">
+          <field name="name">grade.form</field>
+          <field name="model">grade</field>
+          <field name="arch" type="xml">
+            <form string="Grade Form">
+              <sheet>
+                <group>
+                  <field name="number"/>
+                  <field name="ability_to_retire"/>  
+                  <field name="max_benefit"/> 
+                </group>   
+              </sheet>
+               <sheet>
+                <group>
+                  <field name="education"/>  
+                  <field name="transport"/>   
+                  <field name="medical"/> 
+                  <field name="mobile"/> 
+                  <field name="housing"/> 
+                </group>   
+              </sheet>
+              <sheet>
+                <group>
+                <field name="disability_rate"/>  
+                  <field name="female_rate"/>
+                  <field name="egypt_rate"/>  
+                  <field name="qatar_rate"/>   
+                  <field name="other_country_rate"/>  
+                </group>   
+              </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers" />
+                <field name="message_ids" widget="mail_thread" />
+              </div>
+            </form>
+          </field>
+        </record>
+
+
+
+
+    <record id="grade_view_tree" model="ir.ui.view">
+    <field name="name">grade tree</field>
+    <field name="model">grade</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="number" />
+        <field name="disability_rate" />
+        <field name="female_rate" />
+        <field name="max_benefit" />
+        <field name="education" />
+        <field name="transport" />
+        <field name="medical" />
+        <field name="mobile" />
+        <field name="housing" />
+        <field name="egypt_rate" />
+        <field name="qatar_rate" />
+        <field name="other_country_rate" />
+        <field name="ability_to_retire" />
+      </tree>
+    </field>
+  </record>
+
+  <record 
+    id="grade_action"
+    model="ir.actions.act_window"
+  >
+    <field name="name">grade action</field>
+    <field name="res_model">grade</field>
+  </record>
+  <menuitem 
+    id="grade_menu_item" 
+    name="Grades" 
+    parent="grades_menu" 
+    action="grade_action" />
+</odoo>
