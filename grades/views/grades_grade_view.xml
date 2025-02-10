@@ -67,7 +67,7 @@
         <field name="disability_rate" />
         <field name="female_rate" />
         <field name="max_benefit" />
-        <field name="education" />
+        <field name="education"/>
         <field name="transport" />
         <field name="medical" />
         <field name="mobile" />
