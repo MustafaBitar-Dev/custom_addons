@@ -2,7 +2,7 @@
 <odoo>
 
         <record id="grade_search" model="ir.ui.view">
-            <field name="name">grade.search</field>
+            <field name="name">grade search</field>
             <field name="model">grade</field>
             <field name="arch" type="xml">
                 <search string="Grade Search">
@@ -18,7 +18,7 @@
         </record>
 
         <record id="grade_view_form" model="ir.ui.view">
-          <field name="name">grade.form</field>
+          <field name="name">grade form</field>
           <field name="model">grade</field>
           <field name="arch" type="xml">
             <form string="Grade Form">
@@ -67,7 +67,7 @@
         <field name="disability_rate" />
         <field name="female_rate" />
         <field name="max_benefit" />
-        <field name="education" />
+        <field name="education"/>
         <field name="transport" />
         <field name="medical" />
         <field name="mobile" />

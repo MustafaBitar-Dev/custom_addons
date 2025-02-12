@@ -1,0 +1,27 @@
+<odoo>
+  <record id="view_employee_form_inherit" model="ir.ui.view">
+    <field name="name">view employee form</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside"> 
+        <page string="Salary Information">
+            <group>
+                <field name="contract_wage"/>
+            </group>
+        </page>
+      </xpath>
+      <field name="job_id" position="after">
+        <field name="grade_id">grade id</field>
+        <field name="grade_number">grade number</field>
+      </field>
+
+        
+    </field>
+  
+  </record>
+
+
+  
+</odoo>
+
