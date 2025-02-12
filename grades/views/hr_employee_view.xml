@@ -5,23 +5,36 @@
     <field name="inherit_id" ref="hr.view_employee_form"/>
     <field name="arch" type="xml">
       <xpath expr="//sheet/notebook" position="inside"> 
-        <page string="Salary Information">
-            <group>
-                <field name="contract_wage"/>
-            </group>
-        </page>
+          <page string="Salary Information">
+              <group>
+                  <field name="contract_wage"/>
+                  <field name="total"/>              
+              </group>
+              <group>
+                  <field name="grade_education"/> 
+                  <field name="grade_transport"/>                
+                  <field name="grade_medical"/>                
+                  <field name="grade_mobile"/>                
+                  <field name="grade_housing"/>                             
+              </group>
+              <group>
+                  <field name="disability_rate"/> 
+                  <field name="female_rate"/> 
+                  <field name="egypt_rate"/> 
+                  <field name="qatar_rate"/>            
+                  <field name="other_country_rate"/>            
+              </group>
+              <group>
+                  <field name="max_benefit"/> 
+                  <field name="ability_to_retire"/>     
+              </group>
+          </page>
       </xpath>
       <field name="job_id" position="after">
         <field name="grade_id">grade id</field>
         <field name="grade_number">grade number</field>
       </field>
-
-        
     </field>
-  
   </record>
-
-
-  
 </odoo>
 
