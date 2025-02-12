@@ -1,6 +1,6 @@
 {
     'name': 'Grades',
-    'depends': ['base', 'mail', 'hr'],
+    'depends': ['base', 'mail', 'hr', 'hr_contract'],
     'application': True,
     'data': [
         'security/ir.model.access.csv',
