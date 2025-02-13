@@ -1,14 +1,47 @@
 <odoo>
+<record id="view_employee_tree_inherit" model="ir.ui.view">
+    <field name="name">view employee tree</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//tree" position="inside">
+            <field name="visa_expire"/>
+            <field name="visa_status" invisible="1"/>           
+        </xpath>
+    </field>
+</record>
+
+
+
+<record id="view_employee_kanban_inherit" model="ir.ui.view">
+    <field name="name">view employee kanban</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+    <field name="arch" type="xml">
+        <xpath expr="//templates//div//div/ul" position="inside">
+            <li>
+              <field name="visa_expire"/>
+              <field name="visa_status" invisible="1"/>     
+            </li>      
+        </xpath>
+    </field>
+</record>
+
+
+
   <record id="view_employee_form_inherit" model="ir.ui.view">
     <field name="name">view employee form</field>
     <field name="model">hr.employee</field>
     <field name="inherit_id" ref="hr.view_employee_form"/>
     <field name="arch" type="xml">
+      <xpath expr="//sheet//div//div//h1" position="inside">
+        <field name="ref"/>
+      </xpath>
       <xpath expr="//sheet/notebook" position="inside"> 
           <page string="Salary Information">
               <group>
                   <field name="contract_wage"/>
-                  <field name="total"/>              
+                  <field name="total"/>                            
               </group>
               <group>
                   <field name="grade_education"/> 
@@ -33,8 +66,18 @@
       <field name="job_id" position="after">
         <field name="grade_id">grade id</field>
         <field name="grade_number">grade number</field>
+        <field name="visa_expire"/>     
       </field>
     </field>
+  </record>
+  <record id="check_visa_expiration_cron" model="ir.cron">
+    <field name="name">Emplooye: Check visa expiration date</field>
+    <field name="model_id" ref="model_hr_employee"/>
+    <field name="state">code</field>   
+    <field name="code">model.check_visa_expiration_date()</field>    
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
   </record>
 </odoo>
 
