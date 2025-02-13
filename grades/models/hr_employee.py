@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from datetime import timedelta
 
 class HrEmployee(models.Model):
     _inherit = ['hr.employee']
@@ -27,7 +28,13 @@ class HrEmployee(models.Model):
     
     total = fields.Float('Total', compute='_compute_total')
     
+    visa_status = fields.Selection([
+    ('valid', "Valid"),
+    ('soon', "Expiring Soon"),
+    ('expired', "Expired")], default='valid')
     
+    
+    ref = fields.Char(default='New', readonly=True)
     
     @api.depends('grade_education','grade_transport','grade_medical','grade_mobile','grade_housing')
     def _compute_total(self):
@@ -38,3 +45,22 @@ class HrEmployee(models.Model):
             if record.disability:
                 allowances *= record.disability_rate
             record.total = allowances + record.contract_wage
+            
+            
+    def check_visa_expiration_date(self):
+        employee_ids = self.search([])  
+        for rec in employee_ids:           
+            if rec.visa_expire:
+                if rec.visa_expire < fields.date.today():
+                    rec.visa_status = 'expired'              
+                elif rec.visa_expire - timedelta(30) < fields.date.today():
+                    rec.visa_status = 'soon'
+                else:
+                    rec.visa_status = 'valid'           
+    
+    @api.model
+    def create(self, vals):
+        res = super(HrEmployee, self).create(vals)
+        if res.ref == 'New':
+            res.ref = self.env['ir.sequence'].next_by_code('emplooye_seq')
+        return res

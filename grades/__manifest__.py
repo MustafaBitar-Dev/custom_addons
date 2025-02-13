@@ -6,6 +6,7 @@
         'security/ir.model.access.csv',
         'views/base_menu.xml',
         'views/grades_grade_view.xml',
-        'views/hr_employee_view.xml'
+        'views/hr_employee_view.xml',
+        'data\sequence.xml'
     ]
 }
